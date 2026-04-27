@@ -49,3 +49,5 @@ stmt.run(item.brand, item.createdAt, item.text);
 Option A is consistent with the rest of the codebase and is preferred.
 The `insertStatement` export in `tables/insights.ts` can then be removed,
 along with its `Insert` type (or keep `Insert` as it's useful for typing input).
+
+**Status:** ✅ Fixed — commit `2580318` (Option A: `insertStatement` removed from `tables/insights.ts`; `create-insight.ts` and `testing.ts` seed both use `db.sql` tagged template)

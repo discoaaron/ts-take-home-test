@@ -3,7 +3,8 @@
 ## BUG-005 — Wrong type generic on `useState`
 
 **File:** `client/src/routes/app.tsx`  
-**Severity:** 🟡 Type error — TypeScript will infer `insights` as `Insight` (single object) not `Insight[]`
+**Severity:** 🟡 Type error — TypeScript will infer `insights` as `Insight` (single object) not `Insight[]`  
+**Status:** ✅ Fixed — commit `2580318`
 
 ### Current code
 ```ts
@@ -20,7 +21,8 @@ const [insights, setInsights] = useState<Insight[]>([]);
 ## BUG-006 — `res.json()` returns a Promise but is not awaited
 
 **File:** `client/src/routes/app.tsx`  
-**Severity:** 🔴 Runtime bug — state is set to a `Promise` object, not the parsed JSON data
+**Severity:** 🔴 Runtime bug — state is set to a `Promise` object, not the parsed JSON data  
+**Status:** ✅ Fixed — commit `2580318`
 
 ### Current code
 ```ts

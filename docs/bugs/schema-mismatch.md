@@ -55,3 +55,5 @@ Cons: every endpoint that returns an insight needs to apply the same mapping.
 Option B is least disruptive — the DB schema and server model are consistent and
 only client-side names need updating. The client schema was probably written to
 match a future API contract that never landed.
+
+**Status:** ✅ Fixed — commit `2580318` (Option B implemented: `client/src/schemas/insight.ts`, `insights.tsx`, `insights.test.tsx` all updated to use `brand`/`createdAt`)

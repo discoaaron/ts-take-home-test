@@ -3,7 +3,8 @@
 ## BUG-001 — `/insights` route overwrites body instead of setting status
 
 **File:** `server/main.ts`  
-**Severity:** 🔴 Runtime bug — response body is overwritten with `200`, actual data is lost
+**Severity:** 🔴 Runtime bug — response body is overwritten with `200`, actual data is lost  
+**Status:** ✅ Fixed — commit `2580318`
 
 ### Current code
 ```ts
@@ -28,7 +29,8 @@ router.get("/insights", (ctx) => {
 ## BUG-002 — `lookupInsight` receives `id` as `string` instead of `number`
 
 **File:** `server/main.ts`  
-**Severity:** 🟡 Type mismatch — `ctx.params.id` is always a `string`, but `lookupInsight` declares `id: number`
+**Severity:** 🟡 Type mismatch — `ctx.params.id` is always a `string`, but `lookupInsight` declares `id: number`  
+**Status:** ✅ Fixed — commit `2580318` (`parseInt` + `isNaN` guard + 404 when not found)
 
 SQLite coerces the value so it works in practice today, but creates a divergence between
 tests (which pass real numbers) and runtime (which passes strings). Any numeric comparison
@@ -63,7 +65,8 @@ This also fixes the missing 404 when an insight is not found.
 ## BUG-003 — Broad lint suppression masks real issues
 
 **File:** `server/main.ts` (line 1)  
-**Severity:** 🟢 Code quality
+**Severity:** 🟢 Code quality  
+**Status:** ⏳ Not yet addressed
 
 ```ts
 // deno-lint-ignore-file no-explicit-any
@@ -78,7 +81,8 @@ the suppression comment can be removed entirely.
 ## BUG-004 — No error handling on route handlers
 
 **File:** `server/main.ts`  
-**Severity:** 🟢 Code quality / resilience
+**Severity:** 🟢 Code quality / resilience  
+**Status:** ✅ Partially fixed — commit `2580318` (try/catch added to POST and DELETE routes; GET routes still unguarded)
 
 If `listInsights` or `lookupInsight` throw (e.g. DB error, schema parse failure),
 Oak will catch it and return a 500 with an HTML error page. Callers receive no

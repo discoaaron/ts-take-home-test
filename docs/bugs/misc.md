@@ -3,7 +3,8 @@
 ## BUG-007 — Typo in `vite.config.ts`: `servereBaseUrl`
 
 **File:** `client/vite.config.ts`  
-**Severity:** 🟡 Latent bug — silently produces `"undefined"` if the correctly-spelled name is ever referenced
+**Severity:** 🟡 Latent bug — silently produces `"undefined"` if the correctly-spelled name is ever referenced  
+**Status:** ⏳ Not yet addressed
 
 ### Current code
 ```ts
@@ -24,7 +25,8 @@ serverBaseUrl: String(Deno.env.get("SERVER_BASE_URL")),
 ## BUG-008 — Test fixtures missing `id` field for `Insight` type
 
 **Files:** `server/operations/list-insights.test.ts`, `server/operations/lookup-insight.test.ts`  
-**Severity:** 🟢 Code quality — tests pass today but assert against data that doesn't fully match the type contract
+**Severity:** 🟢 Code quality — tests pass today but assert against data that doesn't fully match the type contract  
+**Status:** ✅ Fixed — commit `2580318` (`id` added to client test fixtures; field names also updated to `brand`/`createdAt`)
 
 The `Insight` Zod schema requires `id: z.number().int().min(0)`.
 Test fixture objects include `id`, so that's fine on the server.
@@ -56,7 +58,8 @@ const TEST_INSIGHTS = [
 ## BUG-009 — `insights` list items have no `key` warning potential
 
 **File:** `client/src/components/add-insight/add-insight.tsx`  
-**Severity:** 🟢 Code quality — missing `key` prop on list items
+**Severity:** 🟢 Code quality — missing `key` prop on list items  
+**Status:** ✅ Fixed — commit `2580318` (`key={id}` added to `<option>` elements)
 
 ```tsx
 {BRANDS.map(({ id, name }) => <option value={id}>{name}</option>)}

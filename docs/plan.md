@@ -1,5 +1,7 @@
 # Implementation Plan: Insights Feature
 
+> **Status: ✅ Implemented — commit `2580318` (April 27, 2026)**
+
 Complete the two missing server endpoints, wire them to the existing frontend
 components, and fix the pre-existing bugs that block the feature from working
 end-to-end.
