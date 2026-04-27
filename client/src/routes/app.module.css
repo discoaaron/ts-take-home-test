@@ -9,3 +9,9 @@
 .insights {
   margin-top: var(--size-10);
 }
+
+.error {
+  color: red;
+  margin-top: var(--size-4);
+  font-weight: 600;
+}

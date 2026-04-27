@@ -6,10 +6,11 @@ import type { Insight } from "../../schemas/insight.ts";
 type InsightsProps = {
   insights: Insight[];
   className?: string;
+  onDelete(id: number): void;
 };
 
-export const Insights = ({ insights, className }: InsightsProps) => {
-  const deleteInsight = () => undefined;
+export const Insights = (props: InsightsProps) => {
+  const { insights, className } = props;
 
   return (
     <div className={cx(className)}>
@@ -17,15 +18,15 @@ export const Insights = ({ insights, className }: InsightsProps) => {
       <div className={styles.list}>
         {insights?.length
           ? (
-            insights.map(({ id, text, date, brandId }) => (
+            insights.map(({ id, text, createdAt, brand }) => (
               <div className={styles.insight} key={id}>
                 <div className={styles["insight-meta"]}>
-                  <span>{brandId}</span>
+                  <span>{brand}</span>
                   <div className={styles["insight-meta-details"]}>
-                    <span>{date.toString()}</span>
+                    <span>{createdAt.toString()}</span>
                     <Trash2Icon
                       className={styles["insight-delete"]}
-                      onClick={deleteInsight}
+                      onClick={() => props.onDelete(id)}
                     />
                   </div>
                 </div>
