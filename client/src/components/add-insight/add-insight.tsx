@@ -30,7 +30,9 @@ export const AddInsight = (props: AddInsightProps) => {
             value={brand}
             onChange={(e) => setBrand(Number(e.target.value))}
           >
-            {BRANDS.map(({ id, name }) => <option value={id}>{name}</option>)}
+            {BRANDS.map(({ id, name }) => (
+              <option value={id}>{name}</option>
+            ))}
           </select>
         </label>
         <label className={styles.field}>
